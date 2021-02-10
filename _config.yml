@@ -190,6 +190,8 @@ incremental: false
 # Markdown Processing
 kramdown:
   input: GFM
+  toc: false
+  toc_sticky: false
   hard_wrap: false
   auto_ids: false
   footnote_nr: 1

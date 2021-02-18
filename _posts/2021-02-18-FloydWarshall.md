@@ -102,7 +102,7 @@ last_modified_at: 2021-02-18
 #
 #
 #### Below is all compared process for dp[j][k] when i=2.
-![IMG_8268FE08400C-1](https://user-images.githubusercontent.com/74404132/108322994-7b124880-7209-11eb-9856-ddd104d1cd53.jpeg =250x)
+![IMG_8268FE08400C-1](https://user-images.githubusercontent.com/74404132/108322994-7b124880-7209-11eb-9856-ddd104d1cd53.jpeg =100x20)
 #
 #
 ####... and on and on.

@@ -89,22 +89,37 @@ last_modified_at: 2021-02-18
 ##       dp[j][k]= min(dp[j][k], dp[j][i]+dp[i][k])
 #### the code above can be drawn to graph.
 ##### 
-![IMG_24F6E432ECE3-1](https://user-images.githubusercontent.com/74404132/108319206-62536400-7204-11eb-8366-3eedc914fd5e.jpeg)
-#### Now let's switch i to real value. i starts with 0(vertax 0)
-![IMG_85B9D3903283-1](https://user-images.githubusercontent.com/74404132/108319408-b65e4880-7204-11eb-88fb-b65112a5cc70.jpeg)
+<img src="https://user-images.githubusercontent.com/74404132/108319206-62536400-7204-11eb-8366-3eedc914fd5e.jpeg"  width="400" height="145">
 
+#
+#
+#### Now let's switch i to real value. i starts with 0(vertax 0)
+
+<img src="https://user-images.githubusercontent.com/74404132/108319408-b65e4880-7204-11eb-88fb-b65112a5cc70.jpeg"  width="400" height="145">
+
+#
+#
 #### Seems like nothing happened. Now turn i to 1 (vertax 1)
-![IMG_60C51274B6E1-1](https://user-images.githubusercontent.com/74404132/108320518-3fc24a80-7206-11eb-946d-d7618e2c8064.jpeg)
+<img src="https://user-images.githubusercontent.com/74404132/108320518-3fc24a80-7206-11eb-946d-d7618e2c8064.jpeg"  width="400" height="145">
+
+#
+#
+
 #### * Note: since i is 1, ALL PAIRS of verticles has "COMPLETED" to check whether it costs less when passing through "0".
 #
 #### Thus : dp[j][1] and dp[1][k] has "COMPLETED" to check whether it costs less when passing through "0"
-![IMG_47D54B0FA45D-1](https://user-images.githubusercontent.com/74404132/108321443-82d0ed80-7207-11eb-8f32-7b25119614a6.jpeg)
+#
+<img src="https://user-images.githubusercontent.com/74404132/108321443-82d0ed80-7207-11eb-8f32-7b25119614a6.jpeg"  width="400" height="160">
+
 #
 #
+
 #### Below is all compared process for dp[j][k] when i=2.
-| ![IMG_8268FE08400C-1](https://user-images.githubusercontent.com/74404132/108322994-7b124880-7209-11eb-9856-ddd104d1cd53.jpeg =50x10) | .
+<img src="https://user-images.githubusercontent.com/74404132/108322994-7b124880-7209-11eb-9856-ddd104d1cd53.jpeg"  width="400" height="160">
+
 #
 #
+
 ####... and on and on.
 
 #

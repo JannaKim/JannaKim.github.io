@@ -35,6 +35,8 @@ last_modified_at: 2021-03-02
 
 ###### * essential element= chk list initialized with False
 
+ex code)
+
     chk= [False]*n
     def backtrack(?):
         ans= 1e9

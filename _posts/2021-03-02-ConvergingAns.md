@@ -35,15 +35,15 @@ last_modified_at: 2021-03-02
 
 ###### * ssential element= chk list initialized with False
 #
-        chk= [False]*n
-        def backtrack(?):
-            ans= 1e9
-            for i in range(n):
-                if not chk[i]:
-                    chk[i]=True
-                    tmp= backtrack(?)
-                    ans= min(ans, tmp)
-            return ans
+    chk= [False]*n
+    def backtrack(?):
+        ans= 1e9
+        for i in range(n):
+            if not chk[i]:
+                chk[i]=True
+                tmp= backtrack(?)
+                ans= min(ans, tmp)
+        return ans
 
 #
 #

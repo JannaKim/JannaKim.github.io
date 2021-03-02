@@ -33,8 +33,8 @@ last_modified_at: 2021-03-02
 > > > ##### 3. check all tmp values and find answer
 > > > ##### 4. return answer
 
-###### * ssential element= chk list initialized with False
-#
+###### * essential element= chk list initialized with False
+
     chk= [False]*n
     def backtrack(?):
         ans= 1e9

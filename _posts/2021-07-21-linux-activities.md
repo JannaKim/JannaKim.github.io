@@ -630,7 +630,53 @@ i 입력 후 쓰기모드에서 아래 복사
     filetype indent on    " 파일 종류에 따른 구문 강조
     set mouse=a    " 커서 이동을 마우스로 가능하도록
 
+여기서 " 표시는 c 언어에서 // 처럼 한 줄 주석을 의미
+
+    esc
+    :wq
+
+
 <br/>
+
+    sudo vim /etc/ssh/sshd_config
+/etc/ssh/sshd_config가 설정 파일
+
+    Port 22
+
+ssh의 기본 포트는 22번이다. 변경하면 접속할 때 명시적으로 지정해야 한다.
+
+    #ListenAddress 0.0.0.0
+
+ListenAddress의 주석을 지우고 특정 IP 주소를 넣으면 해당 주소에서만 접속할 수 있다. 기본값은 모두 허용.
+
+
+SSH 프로토콜 1의 개정판인 2를 사용하고, 1과는 호환되지 않는다.
+
+보안 문제가 있어 1을 사용하지 않지만 둘 다 쓰려면 1, 2처럼 쓰면 된다. (config에서 안보임)
+
+
+  HostKey /etc/ssh/ssh_host_rsa_key
+  HostKey /etc/ssh/ssh_host_ecdsa_key
+  HostKey /etc/ssh/ssh_host_ed25519_key
+
+SSH 접속에 사용하는 서버의 키의 위치로, 클라이언트가 접속 시 아래 네 가지 방식으로 암호화된 호스트 키 중 기본값인 ECDSA 방식으로 암호화된 호스트 공개키가 클라이언트의 홈 디렉터리/.ssh/known_hosts 파일에 저장된다.
+
+호스트 공개키는 위 파일명 끝에 .pub이 붙어있다. (예-ssh_host_ecdsa_key.pub)
+
+따라서 서버에서 이 호스트 키가 변경되면 접속한 적이 있는 클라이언트에선 원격 호스트의 인증서가 변경되었다는 오류가 뜬다.
+
+이럴 땐 아래 명령으로 클라이언트에 남아있는 호스트 키를 삭제하고 재접속하면 된다.
+    ssh-keygen -R 아이디@서버주소
+
+관리자 계정인 root로 로그인을 허용하면 yes, 아니면 no, 기본값은 공개키 인증 방식이 아닌 아이디와 비밀번호로 로그인할 때만 금지합니다.
+    PermitRootLogin prohibit-password
+
+공개키 인증 방식을 사용하려면 기본값을, 아이디와 비밀번호로만 로그인하려면 주석 처리합니다.
+    PubkeyAuthentication yes
+
+공개키 인증 방식으로 접속하려는 클라이언트는 먼저 서버의 AuthorizedKeyFile 속성 경로에 공개키를 저장해야 합니다. 기본 경로는 주석과 같으며 %h는 사용자 홈 디렉터리입니다.
+    #AuthorizedKeysFile %h/.ssh/authorized_keys
+
 
 ### 원격 접속은 중요하고 필수적인 작업이다.
 <br/>
@@ -661,14 +707,26 @@ i 입력 후 쓰기모드에서 아래 복사
 
 <br/>
 
-### ssh 서버설치
-
-<br/>
-
-sudo vim /etc/ssh/sshd_config
-
 ### ssh 서버로 접속하는 법
+
+그동안 접속했던 ip는 아래와 같은 명령어를 사용해 확인할 수 있다.
+    ~# cat /var/log/auth* | grep Accepted | awk '{print $9"\t"$11"\t"$14}' | sort | uniq
+
+ssh로 접속하는 방법은 여러가지가 있다. 왜 여러가지가 있는지 이해해야한다.
+
+1. 포트포워딩: 네트워크 인터페이스를 하나 더 추가
+포트포워딩을 이용하면 root 계정이 아닌 user 계정으로 서버를 실행하여
+보안 이슈를 회피하고 port 가용성을 확보할 수 있다.
+
+포트포워딩을 하기 위해서는 현재 사용하고 있는 공유기의 설정 사이트를 가야한다. 
+
+네이버 내 ip 확인: 121.131.108.204
+주소창에 쓰면 공유기 설정 웹으로 갈 수 있다.
     ssh username@hostname
+
+    ifconfig | grep inet // mac ip 172.30.1.55
+
+    ip addr | grep "inet " // ubuntu ip
 
 username에는 사용자의 계정을, hostname에는 ip 주소를 혹은 도메인을 기재해주면 된다. 
 
@@ -678,17 +736,52 @@ username에는 사용자의 계정을, hostname에는 ip 주소를 혹은 도메
 
     ssh -p portnumber username@hostname
 
+
+호스트 기반 인증 방식을 사용하려면 yes로 합니다. 보안 문제로 권장하지 않습니다.
+
+SSH 인증 방식은 아이디, 비밀번호로 하는 패스워드 인증, 공개키 인증, 호스트 인증 방식이 있습니다.
+
+    HostbasedAuthentication no
+
 <br/>
 
 
 
 
 3. 본인 계정 패스워드 설정
+자동으로 비번 설정하라고 뜸.
 
 4. 로컬 컴퓨터에서 가상환경 리모트 컴퓨터에 ssh로 접속해서 본인계정으로 로그인
+로그인 상태에서만 접속 가능했다.
 
+    netstat -ntl
+
+    apt install net-tools // 위에꺼 안되면
 5. 본인 계정에서 /backup 디렉토리를 생성하고 764 모드로 접근권한 바꿔서,
 본인 계정으로 /backup 경로 아래에 파일을 생성할 수 있도록 설정한다.
+
+sshd 서비스를 시작하여 다른 PC에서 접속할 수 있도록 한다.
+
+  service sshd start
+
+  ps -aef|grep sshd
+
+mac 은 ssh 클라이언트가 기본으로 탑재되어 있다.
+
+공유기 사이트를 들어가지 못하는 관계로 ip 허용, 특정 사용자만 허용을 사용했다.
+
+
+    sudo nano /etc/hosts.allow
+
+    sshd: (ip 2자리까지만 기록)
+
+
+    sudo nano /etc/ssh/sshd_config
+
+    AllowUsers janna
+
+
+참고: https://happist.com/573817/리눅스-서버-접속-ip-허용-사용자-접속-허용하기
 
 chmod 764 test.txt
   : user group others 권한을  rwe rw r 로 바꾼다.
@@ -702,6 +795,11 @@ rwe : read, write, execute
 
 6. 가상 환경에 오늘 날짜 + 서울 시간대로 지정해서 로컬과 가상 환경이 동일하도록 맞춘다.
 
+    sudo dpkg-reconfigure tzdata
+
+  The timezone info is saved in /etc/timezone - which can be edited or used belo
+
+<br/>  
 7. 가상 환경에서 터미널을 열고 date 명령으로 오늘 날짜를 출력한 상태로, 화면을 캡쳐한다.
 
 8. 가상 환경에 node.js v14.x 를 설치하고 버전을 확인한다.
@@ -712,12 +810,22 @@ rwe : read, write, execute
 
   DB의 종류 또한 MS에서 개발된 MSSQL을 제외한 대부분의 DB를 지원한다고 할 수 있습니다. 일반적으로 알려진 DBMS인 Oracle, MySQL, MariaDB, PostgresSQL, CUBRID, Firebird를 포함하여 DB2, INFORMIX, Altibase 및 파일DB인 SQLite를 호환하고 있으며 최근 빅데이터에 대한 이슈로 인해 각광 받고 있는 NoSQL계열인 HBase, Cassandra, MongoDB, Couchbase, Redis, Riak 등의 데이터베이스 또한 설치/운영이 가능하다.
 
+
+    apt-get install curl
+
+  1,115KB of disk space used.
+
+    $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.3/install.sh | bash
+
+
+
 9. set.js 파일을 복사해서 실행한다.
+apt-get install curl
 
 
 
 
-
+netstat command not found
 <br/>
 
 

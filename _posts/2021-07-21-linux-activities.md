@@ -559,7 +559,7 @@ OS는 몇가지 주요한 관점에서 바라볼 수 있다.
 
   <br/>
 
-  SSH를 통해 제어하기 위해서는 또 SSH server, SSH client 가 필요하다. 이는 별도의 설치가 필요하다.
+  SSH를 통해 제어하기 위해서는 SSH server, SSH client 가 필요하다. 이는 별도의 설치가 필요하다.
 
   우분투 리눅스엔 SSH 클라이언트는 기본으로 설치되어있지만, SSH 서버는 설치해야 한다. 
 
@@ -568,6 +568,11 @@ OS는 몇가지 주요한 관점에서 바라볼 수 있다.
   사용자가 ssh client에서 명령어를 입력하면 클라이언트 컴퓨터를 제어하는 것이 아닌 서버 컴퓨터를 제어하게 된다.
 
   SSH 서버 실행 파일은 /usr/sbin/sshd이고, SSH 클라이언트 실행 파일은 /usr/bin/ssh이다. 
+
+  <br/>
+
+![Screenshot from 2021-07-21 03-56-19](https://user-images.githubusercontent.com/74404132/126407565-b142ef18-63b0-411d-845a-1b23d37c8df3.png)
+
 
   (d가 붙은 건 상주하는 프로그램, 데몬이란 뜻)
 
@@ -586,6 +591,9 @@ server, client 동시 설치
 
     sudo apt-get install ssh
 
+  
+![Screenshot from 2021-07-21 03-59-02](https://user-images.githubusercontent.com/74404132/126407640-63a326c1-9de5-4676-9365-8e1d955f5375.png)
+
 <br/>
 
 ### SSH server 설정파일(일부)
@@ -602,6 +610,8 @@ vim = vi 대신 더욱 편하게 사용할 수 있다.
 
     $ sudo apt-get update
     $ sudo apt-get install vim
+
+![Screenshot from 2021-07-21 03-59-45](https://user-images.githubusercontent.com/74404132/126407668-2c6677e8-9704-41d6-b6ec-a81cd3723b1b.png)
 
 vim 기능 추가
 
@@ -641,6 +651,12 @@ i 입력 후 쓰기모드에서 아래 복사
     sudo vim /etc/ssh/sshd_config
 /etc/ssh/sshd_config가 설정 파일
 
+<br/>
+
+![Screenshot from 2021-07-21 04-09-27](https://user-images.githubusercontent.com/74404132/126407709-ddba7479-5ce1-4380-b315-a065d7a2d39c.png)
+
+<br/>
+
     Port 22
 
 ssh의 기본 포트는 22번이다. 변경하면 접속할 때 명시적으로 지정해야 한다.
@@ -668,10 +684,10 @@ SSH 접속에 사용하는 서버의 키의 위치로, 클라이언트가 접속
 이럴 땐 아래 명령으로 클라이언트에 남아있는 호스트 키를 삭제하고 재접속하면 된다.
     ssh-keygen -R 아이디@서버주소
 
-관리자 계정인 root로 로그인을 허용하면 yes, 아니면 no, 기본값은 공개키 인증 방식이 아닌 아이디와 비밀번호로 로그인할 때만 금지합니다.
+관리자 계정인 root로 로그인을 허용하면 yes, 아니면 no, 기본값은 공개키 인증 방식이 아닌 아이디와 비밀번호로 로그인할 때만 금지.
     PermitRootLogin prohibit-password
 
-공개키 인증 방식을 사용하려면 기본값을, 아이디와 비밀번호로만 로그인하려면 주석 처리합니다.
+공개키 인증 방식을 사용하려면 기본값을, 아이디와 비밀번호로만 로그인하려면 주석 처리.
     PubkeyAuthentication yes
 
 공개키 인증 방식으로 접속하려는 클라이언트는 먼저 서버의 AuthorizedKeyFile 속성 경로에 공개키를 저장해야 한다. 기본 경로는 주석과 같으며 %h는 사용자 홈 디렉터리.
@@ -709,7 +725,7 @@ SSH 접속에 사용하는 서버의 키의 위치로, 클라이언트가 접속
 
 ### ssh 서버로 접속하는 법
 
-그동안 접속했던 ip는 아래와 같은 명령어를 사용해 확인할 수 있다.
+그동안 접속했던 ip는 아래 명령어를 사용해 확인할 수 있다.
     ~# cat /var/log/auth* | grep Accepted | awk '{print $9"\t"$11"\t"$14}' | sort | uniq
 
 ssh로 접속하는 방법은 여러가지가 있다. 왜 여러가지가 있는지 이해해야한다.
@@ -728,6 +744,11 @@ ssh로 접속하는 방법은 여러가지가 있다. 왜 여러가지가 있는
 
     ip addr | grep "inet " // ubuntu ip
 
+<br/>
+
+![Screenshot from 2021-07-21 04-40-32](https://user-images.githubusercontent.com/74404132/126407730-9ff8ad36-c482-4ba3-99ab-2d591c486293.png)
+
+<br/>
 username에는 사용자의 계정을, hostname에는 ip 주소를 혹은 도메인을 기재해주면 된다. 
 
 이럴 경우 기본적으로 22번 포트를 사용하게 된다.
@@ -769,6 +790,13 @@ SSH 인증 방식은 아이디, 비밀번호로 하는 패스워드 인증, 공�
 <img width="478" alt="Screen Shot 2021-07-21 at 7 20 30 AM" src="https://user-images.githubusercontent.com/74404132/126406929-31f8f29c-d931-4538-b40b-cd3d455a8dd1.png">
 패스워드 이용해 가상환경 접속 완료.
 
+<br/>
+
+![Screenshot from 2021-07-21 06-00-22](https://user-images.githubusercontent.com/74404132/126408011-ae17b415-9249-470d-8d9d-2286e524e3a5.png)
+
+<br/>
+
+compare: logged in at Ubuntu
 
 <br/>
 5. 본인 계정에서 /backup 디렉토리를 생성하고 764 모드로 접근권한 바꿔서,
@@ -794,7 +822,16 @@ mac 은 ssh 클라이언트가 기본으로 탑재되어 있다.
 
     AllowUsers janna
 
+<br/>
 
+![Screenshot from 2021-07-21 07-19-02](https://user-images.githubusercontent.com/74404132/126408184-eb14b26a-dbfa-4f84-8838-1b9d819700f7.png)
+
+
+<br/>
+
+images.githubusercontent.com/74404132/126408097-40036dce-b4a0-436b-beae-a2a5bc8f4211.png)
+
+<br/>
 
 
 
@@ -827,14 +864,23 @@ ls -l 명령어로 권한 수정됐음이 확인됐다.
 
 <br/>
 
-6. 가상 환경에 오늘 날짜 + 서울 시간대로 지정해서 로컬과 가상 환경이 동일하도록 맞춘다.
+6. 가상 환경에 오늘 날짜 + 서울로 지정해서 로컬과 가상 환경이 동일하도록 맞춘다.
 
     sudo dpkg-reconfigure tzdata
 
   The timezone info is saved in /etc/timezone - which can be edited or used belo
 
+![Screenshot from 2021-07-21 05-57-29](https://user-images.githubusercontent.com/74404132/126407903-064de408-870a-44bf-9539-f75a9522b946.png)
+
 <br/>  
+
 7. 가상 환경에서 터미널을 열고 date 명령으로 오늘 날짜를 출력한 상태로, 화면을 캡쳐한다.
+
+<br/>  
+
+![Screenshot from 2021-07-21 06-00-22](https://user-images.githubusercontent.com/74404132/126407937-bace6a65-a67e-4d33-be9c-a86789af2903.png)
+
+<br/>  
 
 8. 가상 환경에 node.js v14.x 를 설치하고 버전을 확인한다.
 
@@ -872,7 +918,6 @@ NVM으로 Node.js를 설치 할 경우 그냥 설치한 것과 설치 위치가 
 
     $ sudo visudo
 
-아래와 같이 수정
 
     ####################################### ## env_reset를 무효화 처리 ###################################### # Defaults env_reset Defaults !env_reset ###################################### ## HOME을 사용할 수 있게 주석 제거 처리 ###################################### # Defaults env_keep += "HOME" Defaults env_keep += "HOME" ####################################### ## PATH가 덮어쓰지 않도록 주석처리 ####################################### # Defaults secure_path = /sbin:/bin:/usr/sbin:/usr/bin
 
@@ -884,8 +929,8 @@ apt-get install curl
 
 
 
+07-21 07-53-39](https://user-images.githubusercontent.com/74404132/126408127-7234d398-1562-456f-8aa5-5a17fca5381b.png)
 
-netstat command not found
 <br/>
 
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Fullstack start"
+title:  "commands"
 excerpt: "reviews"
 
 

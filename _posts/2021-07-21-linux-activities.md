@@ -815,8 +815,34 @@ rwe : read, write, execute
 
   1,115KB of disk space used.
 
+    nvm 설치
+
     $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.3/install.sh | bash
 
+    ssh를 재시작. logout 후에 다시 ssh로 접속
+
+    $ source ~/.bashrc
+
+  bashrc를 새로 적용시켜 준다.
+
+    nvm install node
+    nvm install v0.14.17.3 
+
+    node -v
+
+  설치 완료. 근데 깨졌다?
+
+
+NVM으로 Node.js를 설치 할 경우 그냥 설치한 것과 설치 위치가 달라지기 때문에 sudo 명령어와 함께 npm이나 node명령어가 적용이 되지 않을 경우가 있습니다.
+그래서 sudo에 대한 PATH 환경변수를 수정해야 하는데 이 설정은 sudoers 파일을 수정해야 하며 visudo 명령어로 아래와 같이 변경 할 수 있습니다.
+
+    $ sudo visudo
+
+아래와 같이 수정
+
+####################################### ## env_reset를 무효화 처리 ###################################### # Defaults env_reset Defaults !env_reset ###################################### ## HOME을 사용할 수 있게 주석 제거 처리 ###################################### # Defaults env_keep += "HOME" Defaults env_keep += "HOME" ####################################### ## PATH가 덮어쓰지 않도록 주석처리 ####################################### # Defaults secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+
+출처: https://stories.tistory.com/225 [나만모르는 이야기]
 
 
 9. set.js 파일을 복사해서 실행한다.

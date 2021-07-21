@@ -549,7 +549,13 @@ OS는 몇가지 주요한 관점에서 바라볼 수 있다.
 
   리눅스가 굉장히 각광 받고 있는 이유는 서버 시장에서 독보적인 점유율을 보이고 있기 때문이다.
 
-  서버는 리눅스 기반으로 인터넷으로 제어되는 컴퓨터를 말한다.
+
+  서버는"리눅스 기반" 으로 인터넷으로 제어되는 컴퓨터를 말한다.
+
+  왜 서버시장에서는 리늑스를 쓸까?
+    윈도우와 달리 리눅스는 오픈소스라서 커널 수정이 가능하기에 문제가 생겼을 때 커널을 수정해서 사용할 수 있다.
+
+    참고: https://www.tecmint.com/why-linux-is-better-than-windows-for-servers/
 
   반대 개념인 클라이언트는 개발자, 사용하자 현재 사용 중인 데스크탑이나 노트북을 말한다.
 
@@ -929,7 +935,7 @@ apt-get install curl
 
 
 
-07-21 07-53-39](https://user-images.githubusercontent.com/74404132/126408127-7234d398-1562-456f-8aa5-5a17fca5381b.png)
+![Screenshot from 07-21 07-53-39](https://user-images.githubusercontent.com/74404132/126408127-7234d398-1562-456f-8aa5-5a17fca5381b.png)
 
 <br/>
 

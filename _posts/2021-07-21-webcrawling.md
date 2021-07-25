@@ -21,32 +21,76 @@ last_modified_at: 2021-07-21
 
 finds every link, find, go inside and does the same logic
 
-웹-크롤링 Web-Crawling은 웹 사이트에 있는 데이터를 추출해서 사용하기 위한 목적으로 홈페이지 내용을 수집하고, 추출하는 것을 의미한다. 특정한 규칙에 맞춰서 웹 페이지에 방문해서 내용에 포함된 데이터를 가져오는 것을 말합니다. 사용자가 웹 브라우저로 검색해서 결과로 나온 정보를 노트에 써놓는 것과 비슷한 행동을 프로그램이 반복해서 저장하도록 만드는 것이다.
+목적: 웹 사이트에 있는 데이터를 추출해서 사용하기 위함. 
+
+홈페이지 내용을 수집하고, 추출하는 것을 의미한다. 
+
+#### "특정한 규칙"에 맞춰서 웹 페이지에 방문해서 내용에 포함된 데이터를 가져오는 것인데, 사용자가 웹 브라우저로 검색해서 결과로 나온 정보를 노트에 써놓는 것과 비슷한 행동을 프로그램이 반복해서 저장하도록 만든다.
+
+<br/>
 
 > 읽어볼만한 글 : https://www.cloudflare.com/ko-kr/learning/bots/what-is-a-web-crawler/
 
+<br/>
 
-웹 크롤링: 수집한 데이터에 검색 알고리즘을 적용하는 것
+    웹 크롤링: 수집한 데이터에 검색 알고리즘을 적용하는 것
+
+<br/>
+
+2. 웹 크롤러 봇
+
+웹 크롤러 봇은 "종자", 즉 알려진 URL 목록에서 시작한다. 
+
+    1. 먼저 해당 URL에서 웹페이지를 크롤링한다.
+    2. 이 과정에서 다른 URL에 대한 하이퍼 링크를 찾게 되면, 다음으로 크롤링할 페이지 목록에 추가합니다.
+
+<br/>
 
 
-웹 크롤러 봇은 종자, 즉 알려진 URL 목록에서 시작합니다. 먼저 해당 URL에서 웹페이지를 크롤링합니다. 이 과정에서 다른 URL에 대한 하이퍼 링크를 찾게 되면, 다음으로 크롤링할 페이지 목록에 추가합니다.
+3. 메타 데이터 
 
-메타데이터: 웹사이트가 무엇에 대한 것인지 알려주는 데이터. 용자가 볼 수있는 웹 페이지의 콘텐츠와 달리 검색 엔진 결과 페이지에 표시되는 경우가 많다. 
+메타데이터는 데이터를 설명하는 데이터이다
 
-검색 색인화란? 정보를 필요로 하는 사람에게 인터넷의 어디에서 그 정보를 찾을 수 있는지 알려주기 위해 검색 엔진이 만드는 것. 페이지에 대한 메타데이터에 중점을 둔다.
+사이트가 무엇에 대한 것인지 알려주는 데이터. 용자가 볼 수있는 웹 페이지의 콘텐츠와 달리 검색 엔진 결과 페이지에 표시되는 경우가 많다. 
+
+<br/>
+
+4. 검색 색인화란?
+정보를 필요로 하는 사람에게 인터넷의 "어디에서" 그 정보를 찾을 수 있는지 알려주기 위해 검색 엔진이 만드는 것. "페이지에 대한 메타데이터에" 중점을 둔다.
+
+<br/>
+
+5. 웹 크롤러 작동 방식
 
 
-웹 크롤러 작동 방식:
-웹 크롤러는 크롤링할 페이지, 크롤링 순서, 콘텐츠 업데이트를 확인하기 위해 다시 크롤링하는 빈도에 대해 보다 선택적인 정책을 따릅니다.
+웹 크롤러는 크롤링할 페이지, 크롤링 순서, 콘텐츠 업데이트를 확인하기 위해 다시 크롤링하는 빈도에 대해 보다 선택적인 정책을 따른다.
+
+
 해당 페이지에 중요한 정보가 포함될 가능성을 나타내는 요소인 해당 페이지를 링크하고 있는 다른 페이지 수, 페이지 방문자 수 등의 요소를 기준으로 먼저 크롤링할 페이지를 결정한다.
 
-웹페이지 재방문: 웹 콘텐츠는 지속적으로 변경되거나 삭제되고 새로운 위치로 이동합니다. 웹 크롤러는 정기적으로 페이지를 다시 방문하여 최신 버전의 콘텐츠를 색인화해야 합니다.
+<br/>
+
+<br/>
+
+6. 웹 크롤링 특징 - 웹 페이지 재방문:
+
+웹 콘텐츠는 지속적으로 변경되거나 삭제되고 새로운 위치로 이동한다. 
+
+그러므로 웹 크롤러는 정기적으로 페이지를 다시 방문하여 최신 버전의 콘텐츠를 색인화해야 한다.
+
+<br/>
+
+<br/>
+
+7. 웹 크롤러 봇이 액세스 허용된 웹과 아닌 웹이 있다.
 
 
-웹 크롤러 봇이 액세스 허용된 웹가 아닌 웹
+    웹 크롤러가 콘텐츠를 색인화하려면 서버 자원이 필요하다.
+
+<br/>
 
 
-웹 크롤러가 콘텐츠를 색인화하려면 서버 자원이 필요합니다. 웹 크롤러도 서버의 응답이 필요한 요청을 냅니다. 과도한 색인화는 서버 과부하, 대역폭 비용을 고려해서 각 페이지의 콘텐츠 양이나 사이트 내의 페이지 수에 따라, 검색 색인화를 자주 허용하지 않는 것이 웹사이트 운영자에게 유리한 경우도 있습니다.
+웹 크롤러도 서버의 응답이 필요한 요청을 냅니다. 과도한 색인화는 서버 과부하, 대역폭 비용을 고려해서 각 페이지의 콘텐츠 양이나 사이트 내의 페이지 수에 따라, 검색 색인화를 자주 허용하지 않는 것이 웹사이트 운영자에게 유리한 경우도 있습니다.
 
 시지를 맞춤화하거나 페이지 성능을 정확하게 측정할 수 있기 때문입니다. 이 경우, 랜딩 페이지에 "no index" 태그를 추가하여 검색 엔진 결과에 표시되지 않게 할 수 있습니다. 또한, 페이지나 robots.txt 파일에 "disallow" 태그를 추가할 수도 있으며, 이렇게 하면, 검색 엔진 스파이더는이를 크롤링하지 않습니다.
 
@@ -160,7 +204,31 @@ html 그대로 긁어오면 동적인 데이터는 그대로 뜬다.
         npm init
 
         npm init -y
-        npm i cheerio node-fetch typescript ts-node// a library for fetching data ex axios
+        npm i cheerio node-fetch typescript ts-node// a library for fetching data ex axios 
+
+<br/>
+
+    ## AJAX 란?
+    Asynchronous JavaScript ans XML 
+
+    비동기적으로 JSON 이나 XML 등의 데이터를 받을 수 있는 방법
+
+    curl get 의 역할을 하는 axios 등 함수는 AJAX 리퀘스트를 할 수 있는 라이브러리다
+
+> Docs: [https://axios-http.com/docs/intro](https://axios-http.com/docs/intro)
+
+<br/>
+
+    cheerio
+    JQuery 처럼 DOM Selector 기능을 제공한다. axios로 받은 HTML 데이터에서 실제로 필요한 정보를 파싱하는 데 사용
+
+#### Python 의 Beautiful Soup 과 유사하다.
+
+api docs: https://npmdoc.github.io/node-npmdoc-cheerio/build/apidoc.html
+
+
+
+
 
 
           "scripts": {
@@ -282,6 +350,106 @@ html 그대로 긁어오면 동적인 데이터는 그대로 뜬다.
 웹 브라우저에서 동작하는 방식도 있지만, 웹 브라우저가 보내는 것처럼 HTTP 요청을 만들어서 보내고 응답으로 받은 페이지 내용을 분석하는 방식을 주로 사용한다.
 크롤링 도구마다 어떤 방식을 사용하는지, 어떤 차이점이 있는지 비교해보기를 권장한다.
 
+
+### Javascript Promise, Async, Await란?
+
+<br/>
+
+### Promise
+
+<br/>
+
+
+상태(Status)
+
+    pending: 아직 약속을 수행중인 상태(fulfilled, reject 전)
+
+    fulfilled: 약속(promise)이 지켜진 상태
+
+    rejected: 약속이 어떤 이유로 못지켜짐
+
+    settled: 약속 지켜진 여부에 상관없이 결론이 난 상태
+
+<br/>
+
+    var _promise = function(param){
+      return new Promise(function (resolve, reject)){
+        window.setTimeout(function()){
+          if(param){
+            resolve("resolved");
+          }
+
+          else{
+            reject(Error("error));
+          }
+        }, 3000);
+      });
+    });
+
+<br/>
+
+선언은 new로 하면 되며, callback 함수의 인자 두개를 가진다.
+
+
+<br/>
+
+
+### .then()
+then을 비동기함수 뒤에 붙여 함수 실행 순서, 데이터 전달을 가능하게 한다.
+
+    promise(true)
+      .then(function (text){
+        console.log(text);
+
+      }, function (error){
+        console.error(error);
+      }
+      );
+
+
+### catch().
+then으로 이루어진 비동기함수 중간에 에러가 날 시 catch로 잡을 수 있다. 
+
+_promise(true)
+  .then(JSON.parse)
+  .catch(function()){
+    window.alert('error while chaining);
+  })
+  .then(function (text){
+    console.log(text);
+  });
+
+<br/>
+
+### async && await
+
+https://developer.mozilla.org/ko/docs/Learn/JavaScript/Asynchronous/Async_await
+
+추가된 기능이다. 기본적으로 비동기를 쓰고 Promise를 더 읽기 쉽도록 만들어준다.
+
+async function() 은 await 키워드가 비동기 코드를 호출할 수 있게 해주는 함수이다.
+
+
+1. async의 특징중 하나: 반환받는 값은 Promise 가 된다.
+
+<img width="443" alt="Screen Shot 2021-07-22 at 2 48 49 AM" src="https://user-images.githubusercontent.com/74404132/126535745-80b96511-e903-4a7f-8b03-93b890b5d8e4.png">
+
+2. 
+
+<img width="367" alt="Screen Shot 2021-07-22 at 2 53 59 AM" src="https://user-images.githubusercontent.com/74404132/126536490-e96b3557-39b3-4ec2-b288-6a4b9f9b968e.png">
+
+<br/>
+
+3. 실제로는 fulfill Promise 가 반환되기 때문에 반환된 값을 가용하기 위해선 .then() 블럭을 사용해야 한다.
+
+<img width="367" alt="Screen Shot 2021-07-22 at 2 53 59 AM" src="https://user-images.githubusercontent.com/74404132/126537028-74282302-b632-4bd1-beb6-71d1189616b1.png">
+
+    async 함수는 결과를 직접 반환하는 게 아니라 Promise 를 반환하게 한다.
+
+
+
+
+
 주의사항
 웹 크롤링은 법적으로 보호받을 수 있는 한계가 있기 때문에 주의해야 한다. 개인적인 용도와 저작권법에서 보호하는 공정한 사용 범위 내에서만 사용해야 한다. 만약 스크래핑한 데이터를 다른 곳에 공개하거나, 웹 사이트를 공격하거나 저작권으로 보호하는 데이터를 수집하려는 의도를 갖고 하면 불법 행위로 간주된다. 봇배제표준(robots.txt)에 대해 알아보고, 사용자 에이전트(User Agent) 표기 방식, 웹 크롤링 불법 사례에 대해 학습한다.
 
@@ -293,6 +461,23 @@ https://en.wikipedia.org/wiki/Cache_replacement_policies
 
 학습한다. 그 중에서 LRU (Least recently used) 방식을 활용해서 문제 해결해야 한다.
 캐시 정책 결정 기준
+
+### Cache란?
+<ol>
+캐시는 성능개선에서 가장 많이 사용되는 방법이다.
+
+요청 받아올 때 가장 좋은 건 아무것도 안하는 것, 즉 이미 저장된 데이터를 쓰는 것
+
+제약 조건: 시간
+제한 시간이 유효하다면 캐시를 통해 성능개선을 할 수 있다.
+
+캐시 주의할 점? 메모리가 제한돼 있다. 제약 조건을 두고 cache overflow 시 이전의 데이터를 삭제해 주는 것
+잘 쓰지 않는 오래된 데이터를 삭제해주는 정책
+hit count 고려해서 삭제한다.
+
+
+</ol>
+
 
 
 개수 제한, 용량 제한, 시간 제한 등을 정책적으로 결정할 수 있는 방법들을 확인한다.

@@ -172,3 +172,49 @@ commit message
 
 
 node js 는 인터프리터
+
+
+<br/>
+
+### vscode commands
+
+<br/>
+
+<ol>
+
+<li> ctrl + shift + x : market space
+
+<li> opt + b : open html in default web browser
+
+
+<li> cmd + \ : 편집창 분할
+
+
+<li> cmd + op 위아래: 커서 키우기 / 왼오: 창이동
+
+<li> ctrl + g : go to line
+
+<li> fn + f12 : go to def
+
+<li> shft + fn + f12 : 해당 func 사용하고 있는 부분 표시
+
+
+
+
+### 탭 창 단축키
+
+cmd + shift +l 즐찾탭 제거 
+
+cmd + n 새 창
+
+cmd + t 새창 열어 이동
+
+cmd + 화살표 : 앞, 뒤로 가기
+
+cmd + op + i: 개발자 도구 열기
+
+cmd + l : 검색 주소창으로 이동
+
+cmd + w : 현재 창 지움
+
+

@@ -475,3 +475,6 @@ https://lahuman.github.io/nodejs_global/
 스택안에 스택 
 개행 깔끔하게
 태그안에 설명문 처리?
+
+
+ "type": "module"

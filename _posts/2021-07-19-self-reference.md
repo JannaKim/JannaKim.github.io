@@ -44,6 +44,11 @@ last_modified_at: 2021-07-19
 <br/>
 
      mv 1_day.js 1day.js  // file name change
+
+<br/>
+     mv file
+
+     mv w4/MinJaeKim/17.cpp w5/MinJaeKim 
 <br/>
 
      mkdir challenges new folder

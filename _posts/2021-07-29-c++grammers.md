@@ -60,7 +60,7 @@ std::function이 처리할 수 있는 callable target은 아래와 같다.
 
 
 function<void(int)> go;
-        go = [&](int n) {
+        go = [&](int n) { // 밖의 변수들을 인식하겠다는 뜻
         };
       go[0]
 

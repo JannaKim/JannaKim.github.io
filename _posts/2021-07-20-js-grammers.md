@@ -22,9 +22,6 @@ last_modified_at: 2021-07-20
 왼쪽 정렬, 오른쪽 정렬, 병합 세 구성.
 새 배열에 투포인터로 정렬한거 저장하고 받은 lo hi 에 맞춰서 원본에 전달한다.
 
-function A(Array)
-arr.push();
-arr.length
 
 개행문자 없이: 
 process.stdout.write();
@@ -63,7 +60,6 @@ Es2015: 최근 문법활용이다
 함수형 프로그래밍
 
 
-cmd + b : hide vscode sidebar
 
 
 JSON.stringify(solution(inputA, inputB)) // 문자열로 만들기
@@ -88,23 +84,7 @@ DDL: Debugging Driven Learning
 브랜치: 특정 시점을 기준으로 분기하는 저장소의 작은 단위
 
 module.exports()
-git clone -b 
 
-single--branch
-동일한 이름 브랜치가 있을때 
-arr.toArray();
-
-fork 부터 pr 보내기
-
-add 하면 오브젝트 파일을 생성
-인덱스를 
-
-중앙화된 workflow
-feature branch?
-
-상황별로 마스터 디벨롭 피쳐 릴리즈 핫픽스: 긴급상황 수정
-
-목적에 따라 적절한 워크플로우를 선책해야 한다!
 
 arr.slice()
 값 합치기?
@@ -121,15 +101,7 @@ concat 으로 합칠수 있다 배열
 print.js 따로 만들어서 불러올 수 있다. 
 map. 
 
-gitflow?
 
-github flow
-
-gitlab flow 
-master <- production branch <- pre-production
-
-깃헙의 기능을 제공하는 방식
-커밋
 
 [...base] 깊은 복사
 .sort() 하면 문자열식으로 바꿔서 정렬이 된다.
@@ -152,90 +124,6 @@ master <- production branch <- pre-production
 ### node run.js
 <br/>
 
-### mv 1_day.js 1day.js  // file name change
-<br/>
-
-### mkdir challenges new folder
-<br/>
-
-### rm 삭제
-<br/>
-
-### cp file1 file2 
-<br/>
-
-### cp file1 file2 dir1/ 파일 해당 폴더 안에 복사
-<br/>
-
-### cp -r dir1/ dir2 // 여디렉토리 전체를 복사
-<br/>
-
-### pwd // 경로
-
-<br/>
-
-### clear // 터미널 깨긋하게
-
-
-
-***
-## git commands
-<br/>
-
-### git add hello.txt // 해당 파일 add
-
-### git status
-<br/>
-
-### git commit -am "message" (파일이 commit 된 후, ) 다시 새 버전을 만들 경우, 'add', 'vim에서 msg작성하는 작업'을 명령창에서 바로 할 수 있다. ??
-
-<br/> 
-
-### git branch // 현재 위치한 브랜치
-<br/>
-
-### git branch apple // 새 브랜치 만들기
-<br/>
-
-### git checkout apple // 이 브랜치로 이동하기
-<br/>
-
-### git checkout apple // 이 브랜치로 이동하기
-<br/>
-
-### git log master..develop1 // dev에만 있는 커밋 알려준다
-<br/>
-
-### git log develop1..master // dev에만 있는 커밋 알려준다
-<br/>
-
-## 깃 병합하는 법
-
-1. master branch로 checkout
-2. git merge develop1
-
-<br/>
-
-### git restore file // modified 내용 삭제한다. 즉, 수정한 내용을 삭제해버리고 기존 상태로 되돌린다.
-
-***
-***
-<br/>
-
-
-### GUI: 사용자 인터페이스와 통신하게 해주는 shell
-
-<br/> 
-
-### 요즘 컴퓨터 환경은 거의 다 GUI입니다. GUI가 아닌 프로그램은 거의 없습니다. 윈도우를 부팅하여 바탕화면이 나오면 그 자체가 전부 다 GUI입니다.
-
-<br/>
-
-###  CLI(Command-Line Interface)입니다. 이것은 키보드로 명령어를 일일이 타이핑하여 프로그램을 사용하는 원시적인 방식입니다. GUI와 달리 CLI는 명령어를 모두 외워야 하기에 상당히 불편합니다. 다만 전문가에게는 CLI가 더 편리할 수도 있습니다. 
-
-<br/>
-
-### PR: Pull Request를 통해서 fork를 했던 원래의 저장소에 소스코드를 보낼 수가 있다.
 
 
 <br/>
@@ -252,3 +140,87 @@ commit message
 
 
 node js 는 인터프리터
+
+import PCB from './PCB.js'
+export default class PCB {}
+
+var state = Object.freeze({ready : 'ready', running : 'running', waiting : 'waiting', terminated : 'terminated'})
+
+constructor (...args) { }
+
+# 붙이면 private
+
+
+  for(const burstTime in this.jobQueue){
+      this.jobQueue[burstTime].procState = state.waiting
+      this.readyQueue.allocateProcess(this.jobQueue[burstTime])   
+  }
+
+idx 받고 A[idx]
+
+    jobQueueLoader(burstTimes) { 
+        burstTimes.forEach(burstTime => {
+            let newPCB = new PCB(parseInt(burstTime))
+        });
+
+    }
+
+
+링크드 리스트: head tail 구조체 이용
+
+
+
+rl.on('line', (input) => {
+  const times = input.split(' ') // input format: '1 2 3'
+  linux.createProcess(times.map((time) => parseInt(time)));
+  rl.close();
+}).on('close', function() { // 동기화가?
+  //const scheduled = Promise.linux.schedule()
+  while(true){ 
+    linux.schedule().then() // ???????????????????????{}
+    linux.processQueue.readyQueue.isReadyQueueEmpty().then()
+    console.log(linux.processQueue.kernel.getPCBs());
+    let hello = async function() { return "Hello" };
+    hello();
+    sleep(1000)
+    if(linux.processQueue.readyQueue.isReadyQueueEmpty() == true){
+      console.log("모든 프로세스가 종료되었습니다.")
+      
+
+    }
+    //process.exit(); // 지저분..
+
+  }
+  
+}); // hello hi an nyeong hi ?  !힘내세요!🦮
+
+
+        let outs = []
+        const res = this.PCBs.reduce( (acc, cur) => { // ex) A(terminated), 3 / 3sec
+            let state = cur.procState
+            let time;
+            time = cur.accountingInfo.getUsedTime()
+            outs.push(`${String.fromCharCode(65 + cur.pid)}(${state}), ${time} / ${cur.getBurstTime()}sec`) 
+        }, [] );
+        
+        return outs;
+
+
+const { log } = require("console");
+
+
+
+
+export const state~
+import PCB, {state} from './PCB.js'
+
+
+객체 가져 가는법
+
+const {K1, K2} = require("./fact_sheet")
+class Kichen{}
+
+let K1 = new Kichen(1)
+let K2 = new Kichen(2)
+
+module.exports = {K1, K2}

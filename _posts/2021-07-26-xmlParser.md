@@ -478,3 +478,7 @@ https://lahuman.github.io/nodejs_global/
 
 
  "type": "module"
+
+
+console.error("Error", error);
+

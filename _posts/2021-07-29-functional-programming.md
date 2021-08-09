@@ -216,8 +216,8 @@ locality라고 표현을 하기도 한다.
 이름없는 함수와 클로저는 구분하자.
 함수를 만들 때 보통 함수 이름을 지정을 해주는데, 이름을 지정하지 않고도 함수를 선언할 수 있다.
 
-let closure =
-(function(n) {return n*n;})
+    let closure =
+    (function(n) {return n*n;})
 
 함수지만 이름이 없는 상태도 클로저로 표현할 수 있다
 
@@ -236,15 +236,15 @@ let closure =
 <li> 함수형 프로그래밍은 재귀 호출을 쓴다.
 반복문을 쓰지 않고 함수로만 흐름 제어를 다 구현할 수도 있다.
 
-function factorial(n){
-  function factorialInner(n, acc){
-    if(n == 0){
-      return acc;
+    function factorial(n){
+      function factorialInner(n, acc){
+        if(n == 0){
+          return acc;
+        }
+        return factorialInner(n-1, acc * n);
+      }
+      return factorialInner(n, 1);
     }
-    return factorialInner(n-1, acc * n);
-  }
-  return factorialInner(n, 1);
-}
 
 리스비, 스킴 함수로만 처리하다보니 포문과 결국 비슷한것.
 
@@ -340,20 +340,95 @@ func myMap<T> (_ transform : (Element) -> T) -> [T] {
 이런 애들 사용해서 closure 을 넘겨서 주면 그 클로저가 그 요소들에게 다 반영이 돼서
 표현식으로 사용이 되는 것이다.
 
-let nums = [1, 2, 3, 4, 5, 10, 11, 12];
-let filtered = nums.filter(
-      value => {return value > 10; } ) // 참 이런하는 거만 가져온다.
+    let nums = [1, 2, 3, 4, 5, 10, 11, 12];
+    let filtered = nums.filter(
+          value => {return value > 10; } ) // 참 이런하는 거만 가져온다.
 
-let reduced = numbers.reduce( (prv, cur) => prv + cur);
+    let reduced = numbers.reduce( (prv, cur) => prv + cur);
 
-let nilNumbers = [1, 2, undefined, 4, 5];
-let mapNumber = nilNumbers.map(val => [value]);
-// [[1], [2], [undefined], [4], [5]]
+    let nilNumbers = [1, 2, undefined, 4, 5];
+    let mapNumber = nilNumbers.map(val => [value]);
+    // [[1], [2], [undefined], [4], [5]]
 
-let mapnumberOnly = 
-  nilNumbers.flatMap(val => [value]);
-// [1, 2, undefined, 4, 5] ??????
+    let mapnumberOnly = 
+      nilNumbers.flatMap(val => [value]);
+    // [1, 2, undefined, 4, 5] ?????? null 이 있는지 확인하는 기능이 제공됐다
+
+맵 리듀스 필터를 어떤식으로 쓸까?
+리듀스를 문자를 연산할때 사용할 수가 있다.
+리듀스를 어떤식으로 줄여나가는 과정들을 살펴보자
+
+
+<br/>
+
+
+<br>
+
+<li>  커링과 함수합성
+
+    category theory 얘기할 때 composition 이 되게 중요하다고 말했다.
+    커링과 함수 합성을 사용하면 다양한 표현을 풍성하게 만들 수 있다.
+
+    const plus = ( (a, b) => {return a + b})
+    cons multi = ( (a, b) => {return a * b}) // 클로저 만들고
+
+    function calculate(method){ // 재귀 만든다음에
+      return function(v1){
+        return function(v2){
+          return method(v1, v2)
+        }
+      }
+    }
+
+    calculate(plus)(10)(3) // 이 함수 내에 중첩 함수 두 개 있으니 파라미터 순서대로 붙여줘야 실행이 된다.
+
+    let adder = calculate(plus) // 이 계산기를 더하는 용으로만 쓰겠다는 뜻
+    calculate(plus) 이 앞 부분만 변수로 저장한다
+
+    let adder100 = adder(100) // 더하는 계산긴데 무조건 100 + a 해주겠단 뜻
+
+
+<img width="688" alt="image" src="https://user-images.githubusercontent.com/74404132/127400471-d0f25fb4-c1ee-4369-ba8e-f889041c36eb.png">
+
+
+<br/>
+
+
+<br> 
+
+<li> 요약 FP vs OOP
+이 두 개념이 완전히 대비되는 게 아니다
+OOP 클래스를 만들면서도 순수한 함수를 만들 수 있다.
+OOP 타입 자체도 immutable 한 타입으로 만들 수 있다. (권장하고도 있다)
+OOP 에서 작은 단위로 뭔가를 만들 때 1급함수, 고차함수들을 활용해서 풍성하게 만들 수 있다
+세부적인 동작을 추상화할수 있는 방식을 제공하기 때문에 훨씬 좋은 표현식을 만들 수가 있다.
+
+* 메모리 관리 측면에서도 immutable한 타입을 어떻게 하면 선언적으로 잘 해볼 수 있을 것인가, 
+
+* OOP 객체도 variable 을 많이 만들기 보다는 메모리 관리를 static 하게 다룰 수 있는 걸 heap 쓰지않고 stack에서 사용할 수 있는 게 얼마나 많이 있는 지 살펴보자.
+
+* 함수형 프로그래밍에서도 solid 원칙이 얼마나 섞일 수가 있는지 같이 고민해보자
+
 
 
 
 <br/>
+
+
+  const isSquared = (num) =>
+    Number.isInteger(Math.sqrt(num)) ? "squared" : "";
+  return isAbundant(num) + isPerfect(num) + isPrime(num) + isSquared(num);
+};
+
+const isSquared = (number) => {
+    return [...factors(number)].filter(factor => factor * factor === number)[0];
+}
+
+module.exports.isPerfect = isPerfect;
+
+const mission = require('./mission1');
+
+    Array.from(Array(100).keys())
+        .map((x, i) => i + 1)
+        .map(data)
+        .reduce((cumulative, currnetValue) => { console.log(currnetValue)} );

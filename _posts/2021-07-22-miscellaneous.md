@@ -64,4 +64,4 @@ stack pointer: sp
 스택은 LIFO구조이고, 아래 어셈블리어에서 보이듯 함수별 base address 기준으로 n칸씩 이동한다.
 8byte 씩 이동하려면 어셈블리어 상에선 몇칸씩 점프하는 걸까?
 
-<img width="418" alt="Screen Shot 2021-07-26 at 1 29 32 AM" src="https://user-images.githubusercontent.com/74404132/126906316-2021bac6-28ad-4401-9616-f33a37fd8a06.png">
+<img width="418" alt="Screen Shot 2021-07-26 at 1 29 32 AM" src="https://user-images.githubusercontent.com/74404132/126906316-2021bac6-28ad-4401-9616-f33a37fd8a06.png">w

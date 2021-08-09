@@ -1,3 +1,18 @@
+---
+layout: post
+title:  "http request analysis"
+excerpt: "reviews"
+
+
+categories:
+  - Blog
+tags:
+  - [Blog, jekyll, Github, Git]
+
+ 
+date: 2021-08-10
+last_modified_at: 2021-08-10
+---
 왜 필요한가?
 
 웹 브라우저에서 특정 홈페이지에 접속하는 과정을 이해하는 것은 중요하다. HTTP 요청이 하나만 전송되는 것이 아니라 HTML 페이지 내용에 따라서 연결되는 HTTP 요청과 리소스 다운로드 흐름을 이해해야 한다.

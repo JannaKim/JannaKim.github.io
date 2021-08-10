@@ -224,3 +224,5 @@ let K1 = new Kichen(1)
 let K2 = new Kichen(2)
 
 module.exports = {K1, K2}
+
+indexOf 말고 include 로 어딨는지 찾자.

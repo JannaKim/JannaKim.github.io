@@ -47,13 +47,13 @@ url 은 https: 로 시작해서 .com 으로 끝난다 근데 이건 링크가 �
 
 6. 잡혀야 하는 리다이렉션 모음
 <br/>
-naver.com
+<naver.com>
 <br/>
-google.com
+<google.com>
 <br/>
-github.com
+<github.com>
 <br/>
 
 7. 이거 캐시 잡혀야 한다
-naver.com
+<naver.com>
 

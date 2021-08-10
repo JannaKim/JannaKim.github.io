@@ -10,8 +10,8 @@ tags:
   - [Blog, jekyll, Github, Git]
 
  
-date: 2021-08-10
-last_modified_at: 2021-08-10
+date: 2021-08-09
+last_modified_at: 2021-08-09
 ---
 왜 필요한가?
 

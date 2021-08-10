@@ -365,3 +365,9 @@ cycle
 dfs tree
 union find u, v 합치는데 이미 같ㅇ면 싸이클이다
 
+
+
+<img width="411" alt="image" src="https://user-images.githubusercontent.com/74404132/128762255-b37db5da-3f6a-41a4-be79-3e9966d60514.png">
+
+git commit -a -m "test"
+git push

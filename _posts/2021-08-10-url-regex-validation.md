@@ -137,8 +137,8 @@ https://www.daleseo.com/jest-basic/
 
 가능한 url:
 
-https:
-http: 
+https: ~~~
+http:  ~~~
 www.abc.in
 www.abc-.in
 www.abc-adf.gov
@@ -176,3 +176,8 @@ regex 는 그룹별로 나눠주는 강력한 기능이 있다..
 
 
 www.-_-.)-i <- 이런것도 이론상으로 가능하겠다.
+
+다 ? 로 묶었다.  . 앞뒤로 문자 말곤 필수로 있어야할 애가 있나?
+
+
+![image](https://user-images.githubusercontent.com/74404132/128911091-ba2ea455-2815-47d6-beb0-be97aed5e25c.png)

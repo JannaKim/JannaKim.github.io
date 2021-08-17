@@ -260,3 +260,242 @@ cs : part of the program that shared memory is accessed.
 reminder section : shared memory is not accessed.
 
 race condition :  the order of execution of instructions of processes defines the results produced 
+
+![image](https://user-images.githubusercontent.com/74404132/129674067-522221b0-5303-4f27-b468-c12425cbc1f5.png)
+
+Assume we have P1, P2 and we know all of the instructions.
+
+In P1, it is only 3, 4 that is accessing the shared memory.
+In P2, 4, 5
+
+At any point of time, both processes should not be in the CS in the same time.
+
+We need to avoid inconsistency and race condition
+
+![image](https://user-images.githubusercontent.com/74404132/129674441-d3472b27-b6c8-4f39-809b-f30e7748de36.png)
+
+Assume that we have two rooms. We dont want people to enter rooms at the smae time.  If one person enters room1, nobody should enter room 2 at the same time.
+
+How can we do this? 
+
+                We place a watchman and give him a single ticket or single token. If a new person comes to enter either one of the rooms, the watchman will give the token to this person, so the watchman doesn't have the token anymore.
+
+                If a new person comes to enter some room, he will ask watchman for token. BUt watchman will be not have token because he gave it to previous person. So he will tell this person to wait.
+
+                Once the previous guy comes out of the room, he will give the token to the watchman. So the watchman will give the token to the ney guy and he will enter the room.
+
+                In this scenario, it will never come where both these rooms are having people at the same time.
+
+                A person who wants to enter needs to get the token from the watchman and enter. If the watchman doesn't have the token, the person obviously has to wait.
+
+The rooms are nothing but critical sections. We dont want two processes to be inside the critical section at the same time.
+
+Our CPU obviously will fetch instruction by instruction and execute it.
+
+![image](https://user-images.githubusercontent.com/74404132/129675879-8706c6b0-6bc2-416d-89b1-3fb991ee77f8.png)
+
+After CPU has executed line 3, 
+sssume the schedular has preempted this process, and had scheduled. 
+
+In P2, 1, 2, 3 will be fetched and executed
+
+                We should make sure that CPU doesn't fetch line 4 and execute it.
+
+Because P1 is already in critical section.
+
+After the CPU has "completed" P1 line 4, ans has started line 5.
+
+How do we do this? 
+
+![image](https://user-images.githubusercontent.com/74404132/129676591-7b7e2bf8-9b16-46f9-ab95-bd44d9cacf48.png)
+
+We place a code above CS and below CS.
+
+                A piece of code ? Its just a two or three lines of instructions.
+
+                above : entry section
+
+                below : exit section
+
+What will this entry section and exit section do?
+
+Before line 4, we are making the CPU th fetch entry section code one by one.
+
+In entry section, we will check whether other process is inside the critical section or not, with the help of token.
+
+In case the process is inside the critical section, CPU cannot march further.
+
+Which means, our process will be blocked in the entry section.
+
+
+Why do we need exit section?
+
+Only after one process has come out of CS, other process can enter CS.
+
+Once one process gets out of CS, watchman is getting the token back using Exit section code.
+
+How will it stop the process ans for how long?
+
+We will implement this code using while loop.
+
+We will execute entry section code over and over just to check whether this process has come out of the critical section.
+
+                This mechanism is synchronization mechanism.
+                It is the tecnique of using entry section and exit section.
+
+There are a lot of synchronization mechanisms.   
+
+
+entry and exit section code can be written in a lot of ways.
+
+Based on the way we write code, where will be a lot of synchronization mechanism.
+
+We will see each one by one and see the advantages and disadvantages.
+
+Base on written code, we classify the synchronization mechanism.
+
+How will you tell which is a better synchronization mechanism?
+
+
+![image](https://user-images.githubusercontent.com/74404132/129680442-5ce016fb-6398-4415-a74c-4900f09f6b7e.png)
+
+                That judgement is made based on 3 parameters
+
+                1. Mutual Exclusion
+                2. Progress
+                4. Bounded waiting
+
+If a synchronization mechanism satisfiesd all these three conditions, than we will say that it is best.
+
+1. Mutual Exclusion : A way of making sure that if one process is executing the CS, " then other processes " cannot enter the CS until the executing process comes out of the CS.
+
+If not more than 1 process is inside the CS, it can be said that such a synchronization mechanism satisfies mutual exclusion.
+
+
+We can execute the instructions of both these process in lots of ways.
+
+ = Our CPU can execute these 2 programs in a lot of ways.
+
+For example, 
+
+P1 1, 2 -> P2
+P1 1, 2, 3 -> P2
+
+Our context switching can happen any time.
+
+In all possible ways, whatever way we'll execute, 
+we will always make sure that not more than 1 process can be inside the CS.
+
+Than we say that mutual exclusion is satisfied.
+
+If we are trying all the possible ways, but we cannot find even a single instance where more than 1 process is inside the critical section, than we can say that mutual execlusion is satisfied.
+
+
+### basic idea of progress
+
+if a process is not inside the critical section, it will not block other processes from entering the critical section.
+
+When a process is inside the critical section, it is actually blocking other processes from enthering the critical section.
+
+If a process is in non critical section, it should not block.
+
+                But if a process is in a non-critical section and if it blocks other processe to enter the critical section, we can say that the progress is not satisfied for such a synchronization mechanism.
+
+
+So everything depends on how we write the code for entry section and exit section.
+
+If written in prefect way, it will satisfy progress.
+
+If we make sure that if a progress is a non-critical section and never blocks other process from entering the CS, we cay say such synchronization mechanism satisfies progress.
+
+In case there exists " even a single process " in non-critical section blocks others form entering critical section, it does not satisfy progress.
+ 
+
+### basic idea of bounded waiting
+
+idea: How will entry section look?
+
+Generally, entry section will be written in the form of a while loop.
+
+In while loop, we will have a relational statement.
+
+If such condition is true, we will enter while loop, if false, cannot enter while loop
+
+If we don't enter while loop, we will be entering critical section.
+
+        Entry section's while loop will be true if other process is inside the CS
+        false if the process is inside the CS.
+
+        In case such process has left the critical section, we will make sure that while loop will return false.
+
+How do we write this code depends on the various sychronization algorithm.
+
+What can actually happen is, let us assume our CPU has scheduled P1.
+ 
+Assume that P1 is CS has been preempted ans OS have scheduled P2.
+
+The entry section of P2 is supposed to block entering the CS.
+
+How ? Our while loop will return true.
+
+While loop will be repeated again and again as long as P2 is preempted.
+
+The CPU will be simply doing unnecessary work. Important thing is P2 is not entering the CS.
+
+After P1 enters exit section, P1 execute non-critical section.
+
+If it is made of while loop and P1 again enters entry section, it will not be blocked because other process is not in the CS.
+
+Now let us assume that P1 is preempted by P2.
+
+P2 again executes while loop since P1 is inside CS.
+
+Let us assume that P2 is preempted by P1. 
+
+P1 has completed exit section and again enters entry section.
+
+It will easily enter CS.
+
+                When P2 is executed, P2 still cannot enter Cs because P1 is in CS.
+
+                This can keep on happening 
+
+                This should not happen, because P2 is starving.
+
+                If is not entering CS for infinite amount of time.
+
+                P2 is not at all executing, whereas P1 is keep on executing.
+
+                In our computer, every P is supposed to run.
+
+All the softwares whould be working.
+
+                We need to have a bound on the number of times a P can enter.
+
+                Entry section should block the process though where is no P inside the CS, 
+                still some process is waiting to enter the CS for a long time.
+
+<br/>        
+
+                Bounded Waiting : A way of making sure that there exists a bound (or limit) on the number of times other processes are allowed to enter the CS after a process of times other processes are allowed to enter the CS after a process has made request to enter TX, and "before" that request is granted.
+
+                If some P is executing entry section, it means that it wants to enter the CS.
+
+                After there has explictly set the desire to enter the CS, " there should be a bound " on the number of times this process can enter the critical section.
+
+<br/>
+
+                Once some P has expressed the desire to enter CS, there should be a bound or limit of number of times this process is allowed to enter into CS.
+
+
+We can say that bounded waiting condition is guaranteed or satisfied.
+
+Synchronization mechanism : writing entry section and exit section.
+
+                If we wrote a good synchronization algorithm or mechanism, there will be a limit of number of times a P can enter, AFTER other P has "expressed" its desire to enter CS. 
+
+
+
+
+
+

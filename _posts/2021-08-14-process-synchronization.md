@@ -492,10 +492,55 @@ We can say that bounded waiting condition is guaranteed or satisfied.
 
 Synchronization mechanism : writing entry section and exit section.
 
-                If we wrote a good synchronization algorithm or mechanism, there will be a limit of number of times a P can enter, AFTER other P has "expressed" its desire to enter CS. 
+                If we wrote a good synchronization algorithm or mechanism, there will be a limit of number of times a P can enter, AFTER other P has "expressed" its desire to enter CS. = entered entry section
 
 
+Important thing is, while loop ends in while(lock != 0);
+lock = 1 is not the part of while loop
 
+When lock == 0, P1 makes lock = 1 and enter CS.
 
+When P1 is premempted and P2 is scheduled, P2 is blocked.
 
+P2 will keep on revolving while loop, as long as P2 is running.
+
+when lock == 1, other Ps should be blocked by entry section.
+
+In this case, there is a chance that more than one P is inside CS.
+
+Why not guaranteed? Lets assume P1 has been scheduled.
+
+P1's while loop will be false 
+
+                Assume that after P1 executes while(lock != 0);, P1 is preempted.
+
+                P2 will again check while loop, and it will also be written false.
+
+                Because P1 has not made lock equal to 1. Before P1 makes lock = 1;, P2 is scheduled.
+
+Assume P2 is exceeding execution, makes lock = 1 and enters CS.
+
+                If P1 is then executed, it will execute from the place where it left out.
+
+P1 will make lock = 1, which is already 1.
+
+More than one is in CS, and we might get inconsistency.
+
+                Lets check whether this synchronization mechanism satisfies progress or not.
+
+Progress ?  If a P is in non-CS, it should not block other P from entering CS.
+
+When will a P kept block in the entry section? It will be blocked only if the value of lock is already 1
+
+The val of lock is 1 only if there is a process inside CS.
+
+It is not the case that P is in a non-CS and blocks entire P from entering CS.
+
+Progress condition is definitely satisfied.
+
+                Lets see whether bounded waiting is satisfied for this synchronization mechanism or not.
+
+Bounded waiting? if a process has " expressed its desire " to enter the CS, then there should be a bound on the number of times " other processes " are allowed to enter CS.
+
+Our synchronization doesnt satisfy bounded waiting.
 

@@ -25,6 +25,10 @@ protection 개념 때문에 P2는 P1에 직접적으로 접근할 수 없다.
 
 주소 1000은 shared memory 이고, 이 공간은 PCB가 아니므로 프로세스들이 '직접' 메모리에 접근할 수 있다.
 
+매모리 가상화 : 자기가 메모리 다 차지하고 있다고 믿는 것 
+
+
+
 shared memory 인 주소 1000은 직접 메모리를 로드하는 여러개의 프로세스들이 잇으므로 동기화에 문제가 생긴다.
 
 이 문제들은 Process Synchronization 에 의해 해결된다.
@@ -46,7 +50,7 @@ cnt ++ 는 사실 어셈블리어 상으로 세줄이고, CPU가 명령어를 �
 
 우리는 선점형 스케쥴러를 쓰기 떄문에 CPU 매 단위로 선점당할 수 있다. 
 
-LOAD, INCR, STORE 세 명령어를 cs 라고 부른다. 이외는 remainder section.
+LOAD, INCR, STORE 세 명령어를 cs 라고 부른다. 이외는 reminder section.
 
 cs : shared memory 를 접근 하는 구간이며, 
 
@@ -117,8 +121,75 @@ We will have variable called lock, and it is nothing but a loolean variable.
 
     Lock variable indicates the number of Ps inside CS, at any point of time.
 
+if lock value 1 : P inside CS is 1.
+
+We have initialized the value of lock equal to zero.
 
 
+
+
+* * * 
+P 간의 통신 방법중 message passing 은 Packet 이 왔다갔다 하는 것
+
+P1 CS 들어가고자 하는 desire 을 밝혔을 때,
+다른 모든 프로세스가 CS에 입장하는 횟수를 limit을 시켜쥬는것.
+
+Bounded waiting? if a process has " expressed its desire " to enter the CS, then there should be a bound on the number of times " other processes " are allowed to enter CS.
+
+한정 대기 :  starvation 막음
+
+대기시간 시간을 한정 짓자.
+
+Bounded waiting : 대기시간을 한정시키는 것이라고 먼저 말하면 이유말하고 ( ) - >. 그 후에 방법 설명
+
+Busy waiting 과 bounded waiting 은 관련이 없다.
+비지웨이팅은 CPU의 효율성
+
+Busy waiting 은 쓸데없이 와일문돌아서 CPU 무의미하게 소비하는 것
+
+Bounded waiting은 starvation을 막는것
+
+개념 -> 이유 -> 방법
+
+
+
+Busy waiting : 쓸데없이 CPU를 낭비하고 있는것
+
+Bounded waiting 왜 해야할까? 뭔가 낭비되고 잇는게 있기 때문이고, 그 수많은 예시중에 busy waiting 이 있다.
+
+Non-  CS = reminder section. 
+
+
+
+￼
+
+  ​A piece of code ? Its just a two or three lines of instructions.
+
+           ​above : entry section
+
+           ​below : exit section
+
+if a process is not inside the critical section, it will not block other processes from entering the critical section.
+
+
+
+mutex를 바깥에서 들어가지도 않은 애가 조정해버리면 progress 에 위반되는 것.
+
+Progress : deadlock 
+
+1. “ 반드시 “ 두 개 이상의 프로세스가 서로가 서로를 물고 있어야하고 = mutual execlussio
+2. 비임계영역에 있는 두개의 P가 각자 리소스를 하나씩만 들고있어서 “ㅖ
+근데 둘다 락을 안들고 있는 상황에서는 progress가 아니다 ?
+
+* Progress * * * * * *
+* 
+3. 
+4
+
+그래서 P1, P2 는 RAM의 다른 곳 (예를 들어 주소 1000) 에 Shared Memory 공간을 생성한다.
+이 두 프로세스는 주소 1000에서 소통한다.
+
+주소 1000은 shared memory 이고, 이 공간은 PCB가 아니므로 프로세스들이 '직접' 메모리에 접근할 수 있다.
 
 
 

@@ -544,3 +544,131 @@ Bounded waiting? if a process has " expressed its desire " to enter the CS, then
 
 Our synchronization doesnt satisfy bounded waiting.
 
+먼저 실행되어야 할 스레드가 있을 때.
+
+컨디션 변수 : 일종의 큐 자료구조.
+
+현재가 원하는 상태와 다를 때 만족되기를 대기하는 큐이다.
+
+sleep - wakeup
+
+producer - consumer problem
+
+buffer : memory ram cache regi
+
+will be filling numbers
+
+every slot can hold only one number
+
+<img width="740" alt="image" src="https://user-images.githubusercontent.com/74404132/131500936-57f93d58-f948-40b3-be33-342f2adb6585.png">
+
+<img width="783" alt="image" src="https://user-images.githubusercontent.com/74404132/131501595-944c6344-fbb8-484d-804e-95e4eda8e99e.png">
+
+if(count == N)
+  ㅡ ㅡ ㅡ preempted
+sleep();
+
+ : deadlock
+
+
+ in kernel : deadlock x. no preemption
+
+
+ semaphore = also a variable.
+
+
+ semphoe = same as variable count
+
+make count with semaphore = accessed only in kernel.
+
+struct semaphore{
+        bool val;
+        quene type L;
+}
+
+struct is used to loop variable
+
+queue = -> -> have only the beginning.
+
+semaphore is a data type.
+
+binary semaphore : val 0 or 1 = mutex
+
+counting semaphore : val any 0~
+
+wait(s)
+
+signal(s)
+
+: system call !!
+
+put PCB in L
+
+we will make beginning of the queue go to CS
+
+if queue empty, make val 1. if not, dotn touch val and pop queue
+
+바로 넘겨주거나, 놓거나 둘 중 하나다.
+
+mutual exclusion in satisfied.
+
+progress satisfied
+
+bounded waiting: queue
+
+it is hardware independent.
+
+
+
+문제 해결:
+1. mutual exclusion : 오직 한 쓰레드만 진입
+2. progress : 진입 결정은 유한 시간 내 // 어떤 스레드가 임계구역에 들어갈지는 유한시간 내에 결정해야 한다 ?
+3. bounded waiting : 어느 쓰레드라도 유한 시간 내
+
+프로세스 / 쓰레드 동기화
+
+1. 임계 구역 3가지 문제 해결
+2. 프로세스 실행 순서 제어 (원하는대로)
+
+3. Busy Wait (비효율성은 제거)
+
+
+OS
+
+1. process management
+  CPU scheduling
+  synchronization
+2. memory
+3. file
+4. I/O
+
+??
+
+
+<img width="493" alt="image" src="https://user-images.githubusercontent.com/74404132/131505983-6fcc0627-2b25-48e2-b6ec-e6829db031ec.png">
+
+
+
+deadlock은 아래 네 가지 조건이 모두 만족될 때
+
+1. mutual exclusion
+    을 배제시키는건 꼬이지 않을까? 어떻게 없앨까
+
+2. 점유대기
+    자원이 두 개 이상일 때 둘 이상의 프로세스가 하나씩 들고 있는 것
+
+3. non- preemptive
+    하나의 프로세스가 다른 프로세스가 든 자원을 뺏을 수 없다
+
+4. circuit
+    원형 큐 여야한다. 
+
+??
+
+
+
+커널 
+
+
+
+<img width="493" alt="image" src="https://user-images.githubusercontent.com/74404132/131505983-6fcc0627-2b25-48e2-b6ec-e6829db031ec.png">

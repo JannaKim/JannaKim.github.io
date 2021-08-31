@@ -13,31 +13,55 @@ tags:
 date: 2021-08-31
 last_modified_at: 2021-08-31
 ---
+<br/>
+<br/>
+
+# Euler’s phi (totient) function (BOJ 4355)
+
+<br/>
+<br/>
+
+https://www.acmicpc.net/problem/4355
+
+<br/>
+
 
 <img width="801" alt="image" src="https://user-images.githubusercontent.com/74404132/131443780-76fb49cc-f8ba-4873-8f6e-71a742ca2edc.png">
+
+
+<br/>
+<br/>
 
 ### relatively prime = coprime
 
 <br/>
 
-is when a divisor of both of them is 1.
+### is when a divisor of both of them is 1.
 
- = components of undiminished fraction.
+####= components of undiminished fraction.
 
 
 It is written as φ(n)
 
-ex) the totatives of n = 10 are 1, 2, 4, 5, 7, 8
+    ex) the totatives of n = 10 are 1, 2, 4, 5, 7, 8
 
-so φ(9) = 6
+    so φ(9) = 6
 
-φ(1) = 1
+    φ(1) = 1
 
-    Euler's totient function is a multiplicative function. φ(mn) = φ(m)φ(n)
+<br/>
+<br/>
+
+## Euler's totient function is a multiplicative function. φ(mn) = φ(m)φ(n)
+
+<br/>
+<br/>
+
+### examples
 
 <br/>
 
-    ex) φ(27) = φ(3)φ(7)
+    φ(27) = φ(3)φ(7)
 
     φ(3) = 3, (1, 2)
 
@@ -64,7 +88,12 @@ so φ(9) = 6
 
     strategy : get 'primes' that is divisible with n and use that formula.
 
-    0. get Primes
+<br/>
+
+### 0. get Primes
+
+<br/>
+
         for(int i = 2; i < MAX; ++i){
           if(visited[i]) continue;
           Prime.push_back(i);
@@ -72,7 +101,13 @@ so φ(9) = 6
                   visited[j] = true;
         }
 
-    1. get primes that is divisible with n
+<br/>
+
+<br/>
+
+### 1. get primes that is divisible with n
+
+<br/>
 
         void getPrimes(int x){
           if(x == 1) return;
@@ -86,8 +121,13 @@ so φ(9) = 6
           if(x != 1) Construct[x]++; // when remaining, they're also prime number.
         }
 
+<br/>
+<br/>
 
-    2. use that formula.
+
+### 2. use that formula.
+
+<br/>
 
     while(1){
       cin >> N;
@@ -106,6 +146,10 @@ so φ(9) = 6
       cout << ans << '\n';
     }
 
+<br/>
+<br/>
+<br/>
+<br/>
 
 full code C++
 

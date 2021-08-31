@@ -193,3 +193,17 @@ private:
     int ans;
 public:
     Solution() : m(2501, -int(1e9)) {};
+
+
+백터는 오버로딩과 프렌드를 사용하는 또 하나의 클래스이다.
+
+
+int& prev_end = merged.back()[1];
+
+갱신됨
+
+sort(intervals.begin(), intervals.end(), [] (const vector<int>& lhs, const vector<int>& rhs)->bool {
+            return lhs[0] < rhs[0];
+        });
+
+        

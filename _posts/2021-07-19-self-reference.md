@@ -371,3 +371,7 @@ union find u, v 합치는데 이미 같ㅇ면 싸이클이다
 
 git commit -a -m "test"
 git push
+
+
+마크다운으로 표 만들기
+https://www.tablesgenerator.com/markdown_tables
